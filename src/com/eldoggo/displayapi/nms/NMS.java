@@ -12,15 +12,15 @@ public interface NMS {
 	
 	public void broadcastTitleReset();
 	
-	public void sendActionbarMessage(Player player, String message);
+	public void sendActionMessage(Player player, String message);
 	
-	public void broadcastActionbarMessage(String message);
+	public void broadcastActionMessage(String message);
 
 	public void sendTabHeaderFooter(Player player, String header, String footer);
 	
 	public void broadcastTabHeaderFooter(String header, String footer);
 	
-	public void resetTabHeaderFooter(Player player);
+	public void sendTabHeaderFooterReset(Player player);
 	
-	public void broadcastResetTabHeaderFooter();
+	public void broadcastTabHeaderFooterReset();
 }

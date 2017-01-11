@@ -60,7 +60,7 @@ public class DisplayAPI {
 	 * @param message The message to display
 	 */
 	public void sendActionMessage(Player player, String message){
-		plugin.getNMS().sendActionbarMessage(player, message);
+		plugin.getNMS().sendActionMessage(player, message);
 	}
 	
 	/**
@@ -69,7 +69,7 @@ public class DisplayAPI {
 	 * @param message The message to display
 	 */
 	public void broadcastActionMessage(String message){
-		plugin.getNMS().broadcastActionbarMessage(message);
+		plugin.getNMS().broadcastActionMessage(message);
 	}
 	
 	/**
@@ -99,13 +99,13 @@ public class DisplayAPI {
 	 * @param player
 	 */
 	public void sendTabHeaderFooterReset(Player player){
-		plugin.getNMS().resetTabHeaderFooter(player);
+		plugin.getNMS().sendTabHeaderFooterReset(player);
 	}
 	
 	/**
 	 * Reset the tab header and footer of all players
 	 */
 	public void broadcastTabHeaderFooterReset(){
-		plugin.getNMS().broadcastResetTabHeaderFooter();
+		plugin.getNMS().broadcastTabHeaderFooterReset();
 	}
 }

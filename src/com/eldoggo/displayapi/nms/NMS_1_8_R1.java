@@ -3,18 +3,19 @@ package com.eldoggo.displayapi.nms;
 import java.lang.reflect.Field;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import net.minecraft.server.v1_11_R1.ChatComponentText;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_11_R1.PacketPlayOutPlayerListHeaderFooter;
-import net.minecraft.server.v1_11_R1.PacketPlayOutTitle;
-import net.minecraft.server.v1_11_R1.PlayerConnection;
+import net.minecraft.server.v1_8_R1.ChatComponentText;
+import net.minecraft.server.v1_8_R1.ChatSerializer;
+import net.minecraft.server.v1_8_R1.EnumTitleAction;
+import net.minecraft.server.v1_8_R1.IChatBaseComponent;
+import net.minecraft.server.v1_8_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_8_R1.PacketPlayOutPlayerListHeaderFooter;
+import net.minecraft.server.v1_8_R1.PacketPlayOutTitle;
+import net.minecraft.server.v1_8_R1.PlayerConnection;
 
-public class NMS_1_11_R1 implements NMS {
+public class NMS_1_8_R1 implements NMS {
 
 	@Override
 	public void sendTitle(Player player, String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks) {
@@ -22,20 +23,20 @@ public class NMS_1_11_R1 implements NMS {
 			return;
 		}
 
-		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, (IChatBaseComponent) null);
+		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, (IChatBaseComponent) null);
 		PacketPlayOutTitle timePacket = new PacketPlayOutTitle(fadeInTicks, stayTicks, fadeOutTicks);
 
 		PacketPlayOutTitle titlePacket = null;
 		PacketPlayOutTitle subtitlePacket = null;
 
 		if (title != null) {
-			IChatBaseComponent titleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + title + "\"}");
-			titlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, titleComponent);
+			IChatBaseComponent titleComponent = ChatSerializer.a("{\"text\": \"" + title + "\"}");
+			titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, titleComponent);
 		}
 
 		if (subtitle != null) {
-			IChatBaseComponent subtitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
-			subtitlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subtitleComponent);
+			IChatBaseComponent subtitleComponent = ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
+			subtitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, subtitleComponent);
 		}
 
 		PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
@@ -56,20 +57,20 @@ public class NMS_1_11_R1 implements NMS {
 			return;
 		}
 
-		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, (IChatBaseComponent) null);
+		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, (IChatBaseComponent) null);
 		PacketPlayOutTitle timePacket = new PacketPlayOutTitle(fadeInTicks, stayTicks, fadeOutTicks);
 
 		PacketPlayOutTitle titlePacket = null;
 		PacketPlayOutTitle subtitlePacket = null;
 
 		if (title != null) {
-			IChatBaseComponent titleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + title + "\"}");
-			titlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, titleComponent);
+			IChatBaseComponent titleComponent = ChatSerializer.a("{\"text\": \"" + title + "\"}");
+			titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, titleComponent);
 		}
 
 		if (subtitle != null) {
-			IChatBaseComponent subtitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
-			subtitlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subtitleComponent);
+			IChatBaseComponent subtitleComponent = ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
+			subtitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, subtitleComponent);
 		}
 
 		for (Player player : Bukkit.getOnlinePlayers()){
@@ -88,14 +89,14 @@ public class NMS_1_11_R1 implements NMS {
 
 	@Override
 	public void sendTitleReset(Player player) {
-		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, (IChatBaseComponent) null);
+		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, (IChatBaseComponent) null);
 		PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
 		connection.sendPacket(resetPacket);
 	}
 
 	@Override
 	public void broadcastTitleReset() {
-		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, (IChatBaseComponent) null);
+		PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, (IChatBaseComponent) null);
 		
 		for (Player player : Bukkit.getOnlinePlayers()){
 			PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;

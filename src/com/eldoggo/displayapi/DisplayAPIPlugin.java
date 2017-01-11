@@ -9,7 +9,13 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.eldoggo.displayapi.nms.NMS;
+import com.eldoggo.displayapi.nms.NMS_1_10_R1;
 import com.eldoggo.displayapi.nms.NMS_1_11_R1;
+import com.eldoggo.displayapi.nms.NMS_1_8_R1;
+import com.eldoggo.displayapi.nms.NMS_1_8_R2;
+import com.eldoggo.displayapi.nms.NMS_1_8_R3;
+import com.eldoggo.displayapi.nms.NMS_1_9_R1;
+import com.eldoggo.displayapi.nms.NMS_1_9_R2;
 
 public class DisplayAPIPlugin extends JavaPlugin implements Listener {
 
@@ -36,7 +42,19 @@ public class DisplayAPIPlugin extends JavaPlugin implements Listener {
 			return null;
 		}
 		
-		if (version.equals("v1_11_R1")) {
+		if (version.equals("v1_8_R1")) {
+			return new NMS_1_8_R1();
+		} else if (version.equals("v1_8_R2")){
+			return new NMS_1_8_R2();
+		} else if (version.equals("v1_8_R3")){
+			return new NMS_1_8_R3();
+		} else if (version.equals("v1_9_R1")){
+			return new NMS_1_9_R1();
+		} else if (version.equals("v1_9_R2")){
+			return new NMS_1_9_R2();
+		} else if (version.equals("v1_10_R1")){
+			return new NMS_1_10_R1();
+		} else if (version.equals("v1_11_R1")){
 			return new NMS_1_11_R1();
 		}
 
@@ -49,17 +67,6 @@ public class DisplayAPIPlugin extends JavaPlugin implements Listener {
 		
 		//Register Service
 		this.getServer().getServicesManager().register(DisplayAPI.class, displayAPI, this, ServicePriority.Normal);
-		
-		// Add listeners
-		getServer().getPluginManager().registerEvents(this, this);
-	}
-	
-	@EventHandler
-	public void onBlockPlace(BlockPlaceEvent event){
-
-		DisplayAPI api = this.getServer().getServicesManager().load(DisplayAPI.class);
-		api.broadcastTitle("Titles", "are super cool", 10, 20, 10);
-		
 	}
 
 	// Getters

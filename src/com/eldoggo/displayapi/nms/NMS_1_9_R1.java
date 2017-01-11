@@ -3,18 +3,18 @@ package com.eldoggo.displayapi.nms;
 import java.lang.reflect.Field;
 
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
-import net.minecraft.server.v1_11_R1.ChatComponentText;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent;
-import net.minecraft.server.v1_11_R1.IChatBaseComponent.ChatSerializer;
-import net.minecraft.server.v1_11_R1.PacketPlayOutChat;
-import net.minecraft.server.v1_11_R1.PacketPlayOutPlayerListHeaderFooter;
-import net.minecraft.server.v1_11_R1.PacketPlayOutTitle;
-import net.minecraft.server.v1_11_R1.PlayerConnection;
+import net.minecraft.server.v1_9_R1.ChatComponentText;
+import net.minecraft.server.v1_9_R1.IChatBaseComponent;
+import net.minecraft.server.v1_9_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_9_R1.PacketPlayOutChat;
+import net.minecraft.server.v1_9_R1.PacketPlayOutPlayerListHeaderFooter;
+import net.minecraft.server.v1_9_R1.PacketPlayOutTitle;
+import net.minecraft.server.v1_9_R1.PlayerConnection;
 
-public class NMS_1_11_R1 implements NMS {
+public class NMS_1_9_R1 implements NMS {
 
 	@Override
 	public void sendTitle(Player player, String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks) {
