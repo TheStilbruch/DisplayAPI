@@ -1,0 +1,5 @@
+name: DisplayAPI
+main: com.eldoggo.displayapi.DisplayAPIPlugin
+version: '1.0.0'
+author: ElDoggo
+description: Use different display elements on any minecraft server version
