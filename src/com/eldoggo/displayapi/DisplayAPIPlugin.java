@@ -67,6 +67,17 @@ public class DisplayAPIPlugin extends JavaPlugin implements Listener {
 		
 		//Register Service
 		this.getServer().getServicesManager().register(DisplayAPI.class, displayAPI, this, ServicePriority.Normal);
+		
+		// Add listeners
+		getServer().getPluginManager().registerEvents(this, this);
+	}
+	
+	@EventHandler
+	public void onBlockPlace(BlockPlaceEvent event){
+
+		DisplayAPI api = this.getServer().getServicesManager().load(DisplayAPI.class);
+		api.broadcastTitle("Titles", "are super cool", 10, 20, 10);
+		
 	}
 
 	// Getters
