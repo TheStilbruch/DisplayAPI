@@ -72,14 +72,6 @@ public class DisplayAPIPlugin extends JavaPlugin implements Listener {
 		getServer().getPluginManager().registerEvents(this, this);
 	}
 	
-	@EventHandler
-	public void onBlockPlace(BlockPlaceEvent event){
-
-		DisplayAPI api = this.getServer().getServicesManager().load(DisplayAPI.class);
-		api.broadcastTitle("Titles", "are super cool", 10, 20, 10);
-		
-	}
-
 	// Getters
 	public NMS getNMS() {
 		return nms;
