@@ -1,12 +1,10 @@
 # DisplayAPI - Display Library for Spigot
 
 ## Developer Info
+Check the Wiki for developer info!
 
 ## Installation
 Installing the plugin is simple. Just head to the spigot page and download 'DisplayAPI.jar', drag it into your /plugins folder, and...well thats it! Its as simple as that. DisplayAPI has no configuration, however one may be added in the future. 
-
-## Maven
-Want a maven repo for this plugin? Me too but hosting such a thing costs money. If you would like me to make a maven repo, feel free to donate here: [My PayPal](https://www.paypal.me/blackquartz/5)
 
 ## Planned Features
 - [ ] Bossbar support
