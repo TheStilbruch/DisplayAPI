@@ -1,7 +1,7 @@
 # DisplayAPI - Display Library for Spigot
 
 ## Developer Info
-Check the Wiki for developer info!
+Check the [Wiki](https://github.com/TheStilbruch/DisplayAPI/wiki) for developer info!
 
 ## Installation
 Installing the plugin is simple. Just head to the spigot page and download 'DisplayAPI.jar', drag it into your /plugins folder, and...well thats it! Its as simple as that. DisplayAPI has no configuration, however one may be added in the future. 
