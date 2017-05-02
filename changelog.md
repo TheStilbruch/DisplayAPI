@@ -6,3 +6,8 @@ Initial release. Features include
  - Title support
  - Actionbar support
  - Tablist HeaderFooter support
+
+## Version 1.1.0
+Preformance and Documentation Improvements
+ - Better preformance
+ - Much better documentation
