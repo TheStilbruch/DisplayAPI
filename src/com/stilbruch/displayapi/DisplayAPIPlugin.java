@@ -1,6 +1,6 @@
-package com.eldoggo.displayapi;
+package com.stilbruch.displayapi;
 
-import com.eldoggo.displayapi.nms.*;
+import com.stilbruch.displayapi.nms.*;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.ServicePriority;

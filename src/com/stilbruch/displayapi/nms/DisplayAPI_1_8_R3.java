@@ -1,15 +1,15 @@
-package com.eldoggo.displayapi.nms;
+package com.stilbruch.displayapi.nms;
 
-import com.eldoggo.displayapi.DisplayAPI;
-import net.minecraft.server.v1_11_R1.*;
+import com.stilbruch.displayapi.DisplayAPI;
+import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 
-public class DisplayAPI_1_11_R1 implements DisplayAPI {
+public class DisplayAPI_1_8_R3 implements DisplayAPI {
 
 	@Override
 	public void sendTitle(Player player, String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks) {

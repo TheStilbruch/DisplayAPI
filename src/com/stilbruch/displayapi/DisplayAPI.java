@@ -1,4 +1,4 @@
-package com.eldoggo.displayapi;
+package com.stilbruch.displayapi;
 
 import org.bukkit.entity.Player;
 

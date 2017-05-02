@@ -1,15 +1,15 @@
-package com.eldoggo.displayapi.nms;
+package com.stilbruch.displayapi.nms;
 
-import com.eldoggo.displayapi.DisplayAPI;
-import net.minecraft.server.v1_8_R1.*;
+import com.stilbruch.displayapi.DisplayAPI;
+import net.minecraft.server.v1_11_R1.*;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
 
-public class DisplayAPI_1_8_R1 implements DisplayAPI {
+public class DisplayAPI_1_11_R1 implements DisplayAPI {
 
 	@Override
 	public void sendTitle(Player player, String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks) {
@@ -17,20 +17,20 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 			return;
 		}
 
-		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, null);
+		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, null);
 		final PacketPlayOutTitle timePacket = new PacketPlayOutTitle(fadeInTicks, stayTicks, fadeOutTicks);
 
 		PacketPlayOutTitle titlePacket = null;
 		PacketPlayOutTitle subtitlePacket = null;
 
 		if (title != null) {
-			IChatBaseComponent titleComponent = ChatSerializer.a("{\"text\": \"" + title + "\"}");
-			titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, titleComponent);
+			IChatBaseComponent titleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + title + "\"}");
+			titlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, titleComponent);
 		}
 
 		if (subtitle != null) {
-			IChatBaseComponent subtitleComponent = ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
-			subtitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, subtitleComponent);
+			IChatBaseComponent subtitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
+			subtitlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subtitleComponent);
 		}
 
 		//Getting the connection object is faster than using sendPacket in the situation
@@ -53,20 +53,20 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 			return;
 		}
 
-		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, null);
+		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, null);
 		final PacketPlayOutTitle timePacket = new PacketPlayOutTitle(fadeInTicks, stayTicks, fadeOutTicks);
 
 		PacketPlayOutTitle titlePacket = null;
 		PacketPlayOutTitle subtitlePacket = null;
 
 		if (title != null) {
-			IChatBaseComponent titleComponent = ChatSerializer.a("{\"text\": \"" + title + "\"}");
-			titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, titleComponent);
+			IChatBaseComponent titleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + title + "\"}");
+			titlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, titleComponent);
 		}
 
 		if (subtitle != null) {
-			IChatBaseComponent subtitleComponent = ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
-			subtitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE, subtitleComponent);
+			IChatBaseComponent subtitleComponent = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + subtitle + "\"}");
+			subtitlePacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, subtitleComponent);
 		}
 
 		for (Player player : players){
@@ -89,14 +89,14 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 	@Override
 	public void sendTitleReset(Player player) {
 
-		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, null);
+		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, null);
 		sendPacket(player, resetPacket);
 	}
 
 	@Override
 	public void sendTitleReset(Collection<Player> players) {
 
-		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(EnumTitleAction.RESET, null);
+		final PacketPlayOutTitle resetPacket = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.RESET, null);
 		players.forEach(player -> sendPacket(player, resetPacket));
 	}
 
@@ -114,15 +114,15 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 		players.forEach(player -> sendPacket(player, chatPacket));
 	}
 
-	
+
 	@Override
 	public void sendTablist(Player player, String header, String footer) {
 
 		final PacketPlayOutPlayerListHeaderFooter tablistPacket = new PacketPlayOutPlayerListHeaderFooter();
-		
-		IChatBaseComponent headerComp = ChatSerializer.a("{\"text\": \"" + header + "\"}");
-		IChatBaseComponent footerComp = ChatSerializer.a("{\"text\": \"" + footer + "\"}");
-		
+
+		IChatBaseComponent headerComp = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + header + "\"}");
+		IChatBaseComponent footerComp = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + footer + "\"}");
+
 		try {
 			Field headerField = tablistPacket.getClass().getDeclaredField("a");
 			Field footerField = tablistPacket.getClass().getDeclaredField("b");
@@ -132,7 +132,7 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 			footerField.set(tablistPacket, footerComp);
 			headerField.setAccessible(false);
 			footerField.setAccessible(false);
-			
+
 		} catch (Exception e) {
 			Bukkit.getLogger().warning("Error sending tablist!");
 			e.printStackTrace();
@@ -146,10 +146,10 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 	public void sendTablist(Collection<Player> players, String header, String footer) {
 
 		final PacketPlayOutPlayerListHeaderFooter tablistPacket = new PacketPlayOutPlayerListHeaderFooter();
-		
-		IChatBaseComponent headerComp = ChatSerializer.a("{\"text\": \"" + header + "\"}");
-		IChatBaseComponent footerComp = ChatSerializer.a("{\"text\": \"" + footer + "\"}");
-		
+
+		IChatBaseComponent headerComp = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + header + "\"}");
+		IChatBaseComponent footerComp = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + footer + "\"}");
+
 		try {
 			Field headerField = tablistPacket.getClass().getDeclaredField("a");
 			Field footerField = tablistPacket.getClass().getDeclaredField("b");
@@ -159,7 +159,7 @@ public class DisplayAPI_1_8_R1 implements DisplayAPI {
 			footerField.set(tablistPacket, footerComp);
 			headerField.setAccessible(false);
 			footerField.setAccessible(false);
-			
+
 		} catch (Exception e) {
 			Bukkit.getLogger().warning("Error sending tablist!");
 			e.printStackTrace();
