@@ -2,110 +2,103 @@ package com.eldoggo.displayapi;
 
 import org.bukkit.entity.Player;
 
-public class DisplayAPI {
-	
-	private DisplayAPIPlugin plugin;
-	
-	public DisplayAPI(DisplayAPIPlugin plugin){
-		this.plugin = plugin;
-	}
-	
+import java.util.Collection;
+
+public interface DisplayAPI {
+
 	/**
-	 * Send a title to the player
-	 * 
-	 * @param player The player to send to
-	 * @param title The title
-	 * @param subtitle The subtitle
+	 * Sends a Minecraft title to the player.
+	 *
+	 * @param player The player to send the title to
+	 * @param title The first line of text in the title
+	 * @param subtitle The second line of text in the title
 	 * @param fadeInTicks The time the title takes to fade in, in ticks
-	 * @param stayTicks The time the title stays, it ticks
+	 * @param stackTicks The time the title stays, in ticks
 	 * @param fadeOutTicks The time the title takes to fade out, in ticks
 	 */
-	public void sendTitle(Player player, String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks){
-		plugin.getNMS().sendTitle(player, title, subtitle, fadeInTicks, stayTicks, fadeOutTicks);
-	}
-	
+	void sendTitle(Player player, String title, String subtitle, int fadeInTicks, int stackTicks, int fadeOutTicks);
+
+
 	/**
-	 * Send a title to all players in the server
-	 * 
-	 * @param title The title
-	 * @param subtitle The subtitle
+	 * Sends a Minecraft title to all players in the provided {@link Player}s. This has benefits over simply iterating over
+	 * a collection of players and using {@link DisplayAPI#sendTitle(Player, String, String, int, int, int)} because it only creates
+	 * the needed objects once, saving memory and time.
+	 *
+	 * @param players The players to send the title to
+	 * @param title The first line of text in the title
+	 * @param subtitle The second line of text in the title
 	 * @param fadeInTicks The time the title takes to fade in, in ticks
-	 * @param stayTicks The time the title stays, it ticks
+	 * @param stackTicks The time the title stays, in ticks
 	 * @param fadeOutTicks The time the title takes to fade out, in ticks
 	 */
-	public void broadcastTitle(String title, String subtitle, int fadeInTicks, int stayTicks, int fadeOutTicks){
-		plugin.getNMS().broadcastTitle(title, subtitle, fadeInTicks, stayTicks, fadeOutTicks);
-	}
-	
+	void sendTitle(Collection<Player> players,  String title, String subtitle, int fadeInTicks, int stackTicks, int fadeOutTicks);
+
 	/**
-	 * Resets the players title
-	 * 
-	 * @param player
+	 * Resets the title of the provided {@link Player}.
+	 *
+	 * @param player Player whose title to reset
 	 */
-	public void sendTitleReset(Player player){
-		plugin.getNMS().sendTitleReset(player);
-	}
-	
+	void sendTitleReset(Player player);
+
 	/**
-	 * Resets the title of every player in the server
+	 * Resets the title of the provided {@link Player}. This has benefits over simply iterating over
+	 * a collection of players and using {@link DisplayAPI#sendTitleReset(Player)} because it only creates
+	 * the needed objects once, saving memory and time.
+	 *
+	 * @param players Players to have their titles reset
 	 */
-	public void broadcastTitleReset(){
-		plugin.getNMS().broadcastTitleReset();
-	}
-	
+	void sendTitleReset(Collection<Player> players);
+
 	/**
-	 * Send an action message to the Player
-	 * 
-	 * @param player The player to send to
-	 * @param message The message to display
+	 * Sends an actionbar message to the provided {@link Player}
+	 *
+	 * @param player Player to send the message to
+	 * @param message Message to send to the player
 	 */
-	public void sendActionMessage(Player player, String message){
-		plugin.getNMS().sendActionMessage(player, message);
-	}
-	
+	void sendActionMessage(Player player, String message);
+
 	/**
-	 * Send an action message to every player
-	 * 
-	 * @param message The message to display
+	 * Sends an actionbar message to the provided {@link Player}s
+	 *
+	 * @param players Players to send the message to
+	 * @param message Message to send to the player
 	 */
-	public void broadcastActionMessage(String message){
-		plugin.getNMS().broadcastActionMessage(message);
-	}
-	
+	void sendActionMessage(Collection<Player> players, String message);
+
 	/**
-	 * Set the players Tab header and footer. Use the \n character for multiple lines
-	 * 
-	 * @param player
-	 * @param header The tab header
-	 * @param footer The tab footer
+	 * Sends a tablist to the provided {@link Player} (Menu that appears when the player presses tab ingame).
+	 *
+	 * @param player The player to send the tablist to
+	 * @param header The header of the tablist
+	 * @param footer The footer of the tablist
 	 */
-	public void sendTabHeaderFooter(Player player, String header, String footer){
-		plugin.getNMS().sendTabHeaderFooter(player, header, footer);
-	}
-	
+	void sendTablist(Player player, String header, String footer);
+
 	/**
-	 * Set the Tab header and footer of all players. Use the \n character for multiple lines
-	 * 
-	 * @param header The tab header
-	 * @param footer The tab footer
+	 * Sends a Tablist to the provided {@link Player}s (Menu that appears when the player presses tab ingame). This has benefits over simply iterating over
+	 * a collection of players and using {@link DisplayAPI#sendTablist(Player, String, String)} because it only creates
+	 * the needed objects once, saving memory and time.
+	 *
+	 * @param players The players to send the tablist to
+	 * @param header The header of the tablist
+	 * @param footer The footer of the tablist
 	 */
-	public void broadcastTabHeaderFooter(String header, String footer){
-		plugin.getNMS().broadcastTabHeaderFooter(header, footer);
-	}
-	
+	void sendTablist(Collection<Player> players, String header, String footer);
+
 	/**
-	 * Reset the tab header and footer of a player
-	 * 
-	 * @param player
+	 * Resets the tablist of the provided {@link Player}.
+	 *
+	 * @param player Player whose tablist to reset
 	 */
-	public void sendTabHeaderFooterReset(Player player){
-		plugin.getNMS().sendTabHeaderFooterReset(player);
-	}
-	
+	void sendTablistReset(Player player);
+
 	/**
-	 * Reset the tab header and footer of all players
+	 * Resets the tablist (Menu that appears when the player presses tab ingame) of the provided {@link Player}. This has benefits over simply iterating over
+	 * a collection of players and using {@link DisplayAPI#sendTablistReset(Player)} because it only creates
+	 * the needed objects once, saving memory and time.
+	 *
+	 * @param players Players to have their titles reset
 	 */
-	public void broadcastTabHeaderFooterReset(){
-		plugin.getNMS().broadcastTabHeaderFooterReset();
-	}
+	void sendTablistReset(Collection<Player> players);
+
 }
