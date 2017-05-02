@@ -32,21 +32,22 @@ public class DisplayAPIPlugin extends JavaPlugin implements Listener {
 		} catch (ArrayIndexOutOfBoundsException ex) {
 			return null;
 		}
-		
-		if (version.equals("v1_8_R1")) {
-			return new DisplayAPI_1_8_R1();
-		} else if (version.equals("v1_8_R2")){
-			return new DisplayAPI_1_8_R2();
-		} else if (version.equals("v1_8_R3")){
-			return new DisplayAPI_1_8_R3();
-		} else if (version.equals("v1_9_R1")){
-			return new DisplayAPI_1_9_R1();
-		} else if (version.equals("v1_9_R2")){
-			return new DisplayAPI_1_9_R2();
-		} else if (version.equals("v1_10_R1")){
-			return new DisplayAPI_1_10_R1();
-		} else if (version.equals("v1_11_R1")){
-			return new DisplayAPI_1_11_R1();
+
+		switch (version) {
+			case "v1_8_R1":
+				return new DisplayAPI_1_8_R1();
+			case "v1_8_R2":
+				return new DisplayAPI_1_8_R2();
+			case "v1_8_R3":
+				return new DisplayAPI_1_8_R3();
+			case "v1_9_R1":
+				return new DisplayAPI_1_9_R1();
+			case "v1_9_R2":
+				return new DisplayAPI_1_9_R2();
+			case "v1_10_R1":
+				return new DisplayAPI_1_10_R1();
+			case "v1_11_R1":
+				return new DisplayAPI_1_11_R1();
 		}
 
 		return null;
